@@ -55,7 +55,7 @@ def test_optical_pipeline(tmp_path, monkeypatch, capsys):
     split.write_text("\n".join(fns))
     cfg_file = tmp_path / "config.yaml"
     OmegaConf.save(cfg, cfg_file)
-    for extra in ([], ["--no_rescale"]):
+    for extra in ([], ["--rescale"]):
         monkeypatch.setattr(sys, "argv", ["eval_optical.py", "--checkpoint", str(ckpt), "--config", str(cfg_file),
                                           "--split_fn", str(split), "--device", "cpu", *extra])
         eval_optical.main()

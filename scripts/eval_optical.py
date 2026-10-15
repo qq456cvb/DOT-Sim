@@ -20,10 +20,10 @@ def main():
     parser.add_argument("--checkpoint", required=True, help="Lightning checkpoint from train_optical.py")
     parser.add_argument("--config", default=None, help="config of the checkpoint (default: use_diff=true)")
     parser.add_argument("--split_fn", required=True, help="text file listing *_gt_colors.mp4 videos")
-    parser.add_argument("--no_rescale", action="store_true",
-                        help="feed the depth and normal videos as stored (/255), which is how build_webdataset.py "
-                             "prepares the training data; by default depth is divided by 3 and normals mapped "
-                             "to [-1, 1]")
+    parser.add_argument("--rescale", action="store_true",
+                        help="convert the videos back to physical units (depth / 3, normals to [-1, 1]) before "
+                             "feeding them to the model; by default they are fed as stored (/255), which is how "
+                             "build_webdataset.py prepares the training data")
     parser.add_argument("--device", default="cuda")
     args = parser.parse_args()
 
@@ -39,9 +39,9 @@ def main():
             rendered_depths = read_mp4(fn.replace("_gt_colors", f"{suffix}_depths")) / 255.0
             rendered_normals = read_mp4(fn.replace("_gt_colors", f"{suffix}_normals")) / 255.0
 
-            if (not cfg.use_gt) and not args.no_rescale:
+            if (not cfg.use_gt) and args.rescale:
                 rendered_depths /= 3.0
-            if not args.no_rescale:
+            if args.rescale:
                 rendered_normals = rendered_normals * 2.0 - 1.0
 
             gt_colors = torch.from_numpy(np.moveaxis(gt_colors, -1, 1)).to(args.device).float()
