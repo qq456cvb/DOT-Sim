@@ -74,6 +74,9 @@ python scripts/eval_optical.py --checkpoint <run>/checkpoints/last.ckpt --split_
 
 ## Data format
 
+The DenseTact recordings and the trained models from the paper are not released. The scripts expect data in the
+following layout, so they can be run on your own recordings:
+
 ```
 data/
 ├── phi_mask.npy, theta_mask.npy     DenseTact camera: per-pixel ray azimuth and elevation (H x W, radians)
