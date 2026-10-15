@@ -1,0 +1,13 @@
+# Residual optical model (scripts/train_optical.py). Override on the command line, e.g.
+#   python scripts/train_optical.py data_root=/path/to/val_t1_t3_webdataset_pil use_wandb=true
+data_root: ???        # required: folder with the {train,val}-*.tar shards from build_webdataset.py
+use_diff: true        # predict the change of the tactile image from the change of depth and normals
+lr: 3e-4
+weight_decay: 1e-4
+use_gt: false
+use_wandb: false      # log losses and validation images to Weights & Biases
+max_epochs: 100
+batch_size: 8
+num_workers: 8
+shuffle_buffer: 100
+val_num_workers: 4

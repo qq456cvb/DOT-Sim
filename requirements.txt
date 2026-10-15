@@ -1,0 +1,24 @@
+# Versions used for the paper (CUDA 11.8, Python 3.10). Install PyTorch for your CUDA version first, e.g.
+#   pip install torch==2.5.1 torchvision==0.20.1 --index-url https://download.pytorch.org/whl/cu118
+torch==2.5.1
+torchvision==0.20.1
+warp-lang==1.5.0
+pytorch-lightning==2.2.5
+webdataset==0.2.86
+hydra-core>=1.2
+omegaconf>=2.3
+gymnasium==0.29.1
+geomloss==0.2.6
+pykeops==2.2  # optional: faster, lower-memory Sinkhorn loss for the calibration on GPU
+point-cloud-utils==0.30.4
+open3d==0.18.0
+trimesh==4.0.9
+pyvista==0.44.0
+pandas==2.1.4
+scipy==1.11.4
+opencv-python==4.8.1.78
+imageio==2.33.1
+imageio-ffmpeg==0.4.9
+jaxtyping==0.2.28
+pillow
+tqdm

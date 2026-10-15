@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dotsim"
+version = "0.1.0"
+description = "DOT-Sim: differentiable optical tactile simulation with precise real-to-sim physical calibration"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.10"
+dependencies = [
+  "numpy",
+  "scipy",
+  "pandas",
+  "tqdm",
+  "pillow",
+  "torch>=2.1",
+  "torchvision>=0.16",
+  "warp-lang==1.5.0",
+  "jaxtyping",
+  "trimesh",
+  "open3d",
+  "point-cloud-utils",
+  "gymnasium>=0.29",
+  "geomloss",
+  "pyvista>=0.43,<0.46",
+  "opencv-python",
+  "imageio",
+  "imageio-ffmpeg",
+  "pytorch-lightning>=2.0",
+  "webdataset>=0.2.86,<0.3",
+  "hydra-core>=1.2",
+  "omegaconf",
+]
+
+[project.optional-dependencies]
+wandb = ["wandb"]
+keops = ["pykeops"]
+test = ["pytest"]
+
+[project.urls]
+Paper = "https://arxiv.org/abs/2604.27367"
+"Project page" = "https://qq456cvb.github.io/projects/dotsim"
+
+[tool.setuptools.packages.find]
+include = ["dotsim*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

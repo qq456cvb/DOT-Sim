@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+build/
+dist/
+
+# Environments
+.env
+.venv/
+venv/
+
+# Data, outputs and checkpoints
+data/
+outputs/
+multirun/
+lightning_logs/
+wandb/
+*.ckpt
+*.pt
+*.pth
+
+# Generated media
+*.mp4
+*.gif
+*.tar
